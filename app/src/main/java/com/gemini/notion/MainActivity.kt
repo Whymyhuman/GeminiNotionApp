@@ -240,8 +240,8 @@ fun NoteListScreen(viewModel: NoteViewModel) {
                 )
             }
         }
-    ) { padding ->
-        Column(modifier = Modifier.padding(padding).padding(16.dp)) {
+    ) { innerPadding ->
+        Column(modifier = Modifier.padding(innerPadding).padding(16.dp)) {
             Text("Notes", fontSize = 32.sp, fontWeight = FontWeight.Bold)
             Spacer(modifier = Modifier.height(16.dp))
             
@@ -319,40 +319,39 @@ fun NoteEditScreen(viewModel: NoteViewModel) {
                     Icon(Icons.Default.AutoAwesome, "AI Magic")
                 }
             }
-        }
-    ) {
+                }
+            ) { innerPadding ->
+                
+                if (showAiMenu) {
+                     AlertDialog(
+                        onDismissRequest = { showAiMenu = false },
+                        title = { Text("AI Assistant") },
+                        text = {
+                            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                                Button(onClick = { viewModel.callGemini("Continue", context); showAiMenu = false }, modifier = Modifier.fillMaxWidth()) { Text("Continue Writing") }
+                                Button(onClick = { viewModel.callGemini("Summarize", context); showAiMenu = false }, modifier = Modifier.fillMaxWidth()) { Text("Summarize") }
+                                Button(onClick = { viewModel.callGemini("Fix", context); showAiMenu = false }, modifier = Modifier.fillMaxWidth()) { Text("Fix Grammar") }
+                                Divider()
+                                Button(onClick = { viewModel.callGemini("Plan", context); showAiMenu = false }, modifier = Modifier.fillMaxWidth(), colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF0D47A1))) { 
+                                     Icon(Icons.Default.Schedule, null); Spacer(Modifier.width(8.dp)); Text("Plan My Day") 
+                                }
+                                Button(onClick = { viewModel.callGemini("Alarm", context); showAiMenu = false }, modifier = Modifier.fillMaxWidth(), colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFB71C1C))) { 
+                                     Icon(Icons.Default.Alarm, null); Spacer(Modifier.width(8.dp)); Text("Set Smart Alarm") 
+                                }
+                            }
+                        },
+                        confirmButton = {},
+                        dismissButton = { TextButton(onClick = { showAiMenu = false }) { Text("Close") } }
+                    )
+                }
         
-        if (showAiMenu) {
-             AlertDialog(
-                onDismissRequest = { showAiMenu = false },
-                title = { Text("AI Assistant") },
-                text = {
-                    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                        Button(onClick = { viewModel.callGemini("Continue", context); showAiMenu = false }, modifier = Modifier.fillMaxWidth()) { Text("Continue Writing") }
-                        Button(onClick = { viewModel.callGemini("Summarize", context); showAiMenu = false }, modifier = Modifier.fillMaxWidth()) { Text("Summarize") }
-                        Button(onClick = { viewModel.callGemini("Fix", context); showAiMenu = false }, modifier = Modifier.fillMaxWidth()) { Text("Fix Grammar") }
-                        Divider()
-                        Button(onClick = { viewModel.callGemini("Plan", context); showAiMenu = false }, modifier = Modifier.fillMaxWidth(), colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF0D47A1))) { 
-                             Icon(Icons.Default.Schedule, null); Spacer(Modifier.width(8.dp)); Text("Plan My Day") 
-                        }
-                        Button(onClick = { viewModel.callGemini("Alarm", context); showAiMenu = false }, modifier = Modifier.fillMaxWidth(), colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFB71C1C))) { 
-                             Icon(Icons.Default.Alarm, null); Spacer(Modifier.width(8.dp)); Text("Set Smart Alarm") 
-                        }
-                    }
-                },
-                confirmButton = {}, 
-                dismissButton = { TextButton(onClick = { showAiMenu = false }) { Text("Close") } }
-            )
-        }
-
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding)
-                .padding(horizontal = 24.dp)
-                .verticalScroll(scrollState)
-        ) {
-             if (viewModel.errorMessage != null) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(innerPadding)
+                        .padding(horizontal = 24.dp)
+                        .verticalScroll(scrollState)
+                ) {             if (viewModel.errorMessage != null) {
                 Text(viewModel.errorMessage!!, color = Color.Red, modifier = Modifier.padding(bottom = 8.dp))
             }
 
