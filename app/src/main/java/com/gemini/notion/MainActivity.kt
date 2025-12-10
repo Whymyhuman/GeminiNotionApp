@@ -254,6 +254,8 @@ fun NoteListScreen(viewModel: NoteViewModel) {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class) // Added this
+@OptIn(ExperimentalMaterial3Api::class) // Added this
 @Composable
 fun NoteItem(note: Note, onClick: () -> Unit, onDelete: () -> Unit) {
     Card(
