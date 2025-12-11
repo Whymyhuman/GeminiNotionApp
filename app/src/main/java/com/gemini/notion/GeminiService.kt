@@ -4,6 +4,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
 import retrofit2.http.POST
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 // --- Data Models for Gemini API ---
@@ -32,8 +33,9 @@ data class Candidate(
 // --- Retrofit Interface ---
 
 interface GeminiApiService {
-    @POST("v1beta/models/gemini-1.5-flash:generateContent")
+    @POST("v1beta/models/{model}:generateContent")
     suspend fun generateContent(
+        @Path("model") model: String,
         @Query("key") apiKey: String,
         @Body request: GenerationRequest
     ): GenerationResponse

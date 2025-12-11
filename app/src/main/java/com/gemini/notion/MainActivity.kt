@@ -152,6 +152,7 @@ class NoteViewModel(application: Application, database: AppDatabase) : AndroidVi
                 }
 
                 val response = GeminiClient.service.generateContent(
+                    model = "gemini-1.5-flash",
                     apiKey = apiKey,
                     request = GenerationRequest(listOf(Content(listOf(Part(finalPrompt)))))
                 )
