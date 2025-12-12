@@ -18,7 +18,7 @@ abstract class AppDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
-                    "gemini_notion_db"
+                    "note_database"
                 ).build()
                 INSTANCE = instance
                 instance

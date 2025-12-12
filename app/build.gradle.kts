@@ -1,7 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("kotlin-kapt")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -12,8 +12,8 @@ android {
         applicationId = "com.gemini.notion"
         minSdk = 26
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 2
+        versionName = "2.0-Pro"
         
         vectorDrawables {
             useSupportLibrary = true
@@ -61,14 +61,21 @@ dependencies {
     // Icons
     implementation("androidx.compose.material:material-icons-extended")
 
+    // Navigation
+    implementation("androidx.navigation:navigation-compose:2.7.0")
+
+    // Room Database (Offline Storage)
+    val roomVersion = "2.6.1"
+    implementation("androidx.room:room-runtime:$roomVersion")
+    implementation("androidx.room:room-ktx:$roomVersion")
+    ksp("androidx.room:room-compiler:$roomVersion")
+
+    // DataStore (Settings/API Key storage)
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+
     // Network (Retrofit + Gson)
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    
-    // Database (Room)
-    implementation("androidx.room:room-runtime:2.6.1")
-    implementation("androidx.room:room-ktx:2.6.1")
-    kapt("androidx.room:room-compiler:2.6.1")
     
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
