@@ -16,7 +16,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-class NoteViewModel(
+class MainViewModel(
     private val repository: NoteRepository,
     private val settingsRepository: SettingsRepository
 ) : ViewModel() {
