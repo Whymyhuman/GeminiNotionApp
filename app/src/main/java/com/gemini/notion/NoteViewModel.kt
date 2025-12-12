@@ -7,8 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.initializer
-import androidx.lifecycle.viewmodel.viewModelFactory
+import androidx.lifecycle.viewmodel.CreationExtras
 import com.gemini.notion.data.Note
 import com.gemini.notion.data.NoteRepository
 import com.gemini.notion.data.SettingsRepository
@@ -125,10 +124,6 @@ class NoteViewModel(
             }
         }
     }
-
-import androidx.lifecycle.viewmodel.CreationExtras
-
-// ... (imports remain same)
 
     companion object {
         val Factory: ViewModelProvider.Factory = object : ViewModelProvider.Factory {
