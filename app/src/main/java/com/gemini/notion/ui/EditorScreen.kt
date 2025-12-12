@@ -14,12 +14,12 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.gemini.notion.MainViewModel
+import com.gemini.notion.NotionProViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EditorScreen(
-    viewModel: MainViewModel,
+    viewModel: NotionProViewModel,
     onBack: () -> Unit
 ) {
     var showAiMenu by remember { mutableStateOf(false) }

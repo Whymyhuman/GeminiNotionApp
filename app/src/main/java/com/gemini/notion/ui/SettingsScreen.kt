@@ -7,12 +7,12 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.gemini.notion.MainViewModel
+import com.gemini.notion.NotionProViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingsScreen(
-    viewModel: MainViewModel,
+    viewModel: NotionProViewModel,
     onBack: () -> Unit
 ) {
     val apiKey by viewModel.apiKeyFlow.collectAsState()

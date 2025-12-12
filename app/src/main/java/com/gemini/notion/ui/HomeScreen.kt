@@ -16,13 +16,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.gemini.notion.MainViewModel
+import com.gemini.notion.NotionProViewModel
 import com.gemini.notion.data.Note
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
-    viewModel: MainViewModel,
+    viewModel: NotionProViewModel,
     onNoteClick: (Int) -> Unit,
     onSettingsClick: () -> Unit
 ) {

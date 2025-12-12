@@ -21,11 +21,11 @@ class MainActivity : ComponentActivity() {
             val context = LocalContext.current
             val application = context.applicationContext as GeminiApp
             
-            val viewModel: MainViewModel = viewModel(
+            val viewModel: NotionProViewModel = viewModel(
                 factory = object : ViewModelProvider.Factory {
                     @Suppress("UNCHECKED_CAST")
                     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                        return MainViewModel(
+                        return NotionProViewModel(
                             application.repository, 
                             application.settingsRepository
                         ) as T

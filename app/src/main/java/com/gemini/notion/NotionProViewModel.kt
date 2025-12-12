@@ -4,10 +4,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.CreationExtras
 import com.gemini.notion.data.Note
 import com.gemini.notion.data.NoteRepository
 import com.gemini.notion.data.SettingsRepository
@@ -16,7 +13,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-class MainViewModel(
+class NotionProViewModel(
     private val repository: NoteRepository,
     private val settingsRepository: SettingsRepository
 ) : ViewModel() {
