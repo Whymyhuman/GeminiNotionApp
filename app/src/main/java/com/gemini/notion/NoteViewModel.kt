@@ -126,11 +126,16 @@ class NoteViewModel(
         }
     }
 
+import androidx.lifecycle.viewmodel.CreationExtras
+
+// ... (imports remain same)
+
     companion object {
-        val Factory: ViewModelProvider.Factory = viewModelFactory {
-            initializer {
-                val application = (this[APPLICATION_KEY] as GeminiApp)
-                NoteViewModel(application.repository, application.settingsRepository)
+        val Factory: ViewModelProvider.Factory = object : ViewModelProvider.Factory {
+            @Suppress("UNCHECKED_CAST")
+            override fun <T : ViewModel> create(modelClass: Class<T>, extras: CreationExtras): T {
+                val application = checkNotNull(extras[APPLICATION_KEY]) as GeminiApp
+                return NoteViewModel(application.repository, application.settingsRepository) as T
             }
         }
     }
