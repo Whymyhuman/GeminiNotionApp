@@ -12,7 +12,7 @@ android {
         applicationId = "com.gemini.notion"
         minSdk = 26
         targetSdk = 34
-        versionCode = 2
+        versionCode = 3
         versionName = "2.0-Pro"
         
         vectorDrawables {
