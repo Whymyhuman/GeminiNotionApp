@@ -22,6 +22,7 @@ class MainActivity : ComponentActivity() {
             val application = context.applicationContext as GeminiApp
             
             val viewModel: NotionProViewModel = viewModel(
+                modelClass = NotionProViewModel::class.java,
                 factory = object : ViewModelProvider.Factory {
                     @Suppress("UNCHECKED_CAST")
                     override fun <T : ViewModel> create(modelClass: Class<T>): T {
