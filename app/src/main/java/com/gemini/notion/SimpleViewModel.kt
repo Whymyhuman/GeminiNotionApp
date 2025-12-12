@@ -98,6 +98,7 @@ class SimpleViewModel(
         viewModelScope.launch {
             try {
                 val response = GeminiClient.service.generateContent(
+                    model = "gemini-pro", // Added missing model parameter
                     apiKey = key,
                     request = GenerationRequest(listOf(Content(listOf(Part(prompt)))))
                 )
