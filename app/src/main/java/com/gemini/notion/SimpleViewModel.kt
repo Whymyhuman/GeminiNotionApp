@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-class NotionProViewModel(
+class SimpleViewModel(
     private val repository: NoteRepository,
     private val settingsRepository: SettingsRepository
 ) : ViewModel() {
