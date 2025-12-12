@@ -30,7 +30,7 @@ jobs:
         rm -rf .gradle
 
     - name: Build with Gradle
-      run: ./gradlew clean assembleDebug --stacktrace --no-build-cache
+      run: ./gradlew clean assembleDebug --stacktrace --no-build-cache --no-daemon --refresh-dependencies
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
